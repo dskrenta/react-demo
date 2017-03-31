@@ -5,10 +5,36 @@ import './App.css';
 class App extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {};
+    this.state = {
+      date: new Date()
+    };
+  }
+
+  componentDidMount () {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount () {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
   }
 
   render() {
+    return (
+      <div>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+    
+    /*
     return (
       <div className="App">
         <div className="App-header">
@@ -21,6 +47,7 @@ class App extends React.Component {
         <p>{this.props.message}</p>
       </div>
     );
+    */
   }
 }
 
