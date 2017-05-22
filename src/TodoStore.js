@@ -1,4 +1,4 @@
-import {observable, computed} from 'mobx';
+import {observable, computed, action} from 'mobx';
 import crypto from 'crypto';
 
 class TodoModel {
@@ -22,11 +22,15 @@ export default class TodoStore {
   @observable todos = [];
 
   constructor() {
-
+    this.addTodo('first item', 'take out the trash');
   }
 
-  addTodo(title, description) {
+  @action addTodo(title, description) {
     this.todos.push(new TodoModel(title, description));
+  }
+
+  @computed get getTodos() {
+    return this.todos;
   }
 
   @computed get getTodosCount() {
