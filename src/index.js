@@ -1,25 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import MaterialApp from './MaterialApp';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-/*
-import TodoApp from './TodoApp';
-import TodoStore from './TodoStore';
-*/
-
+import App from './App';
 import './index.css';
 
-// const todoStore = new TodoStore();
-
-/*
-ReactDOM.render(
-  <TodoApp todoStore={todoStore} />,
-  document.getElementById('root')
-);
-*/
+injectTapEventPlugin();
 
 ReactDOM.render(
-  <MaterialApp></MaterialApp>,
+  <MuiThemeProvider>
+    <App />
+  </MuiThemeProvider>,
   document.getElementById('root')
 );
